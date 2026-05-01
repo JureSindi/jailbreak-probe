@@ -83,11 +83,11 @@ After training, `probes/artifacts/train_summary.json` contains `val_auroc_per_la
 
 ### Interpreting and reporting results (honest framing)
 
-Lead with paraphrase robustness in applications. The most informative signal for monitoring and adversarial robustness is often `paraphrase_robustness` in `results/metrics.json`: cheap template / typo-style rewrites can lower mean probe scores on jailbreak text while still flagging many variants. That pattern—partial robustness plus a clear attack surface- is exactly the kind of nuance oversight systems need. When you cite this project in an application, emphasize that stress test first, then headline AUROC.
+Lead with paraphrase robustness in applications. The most informative signal for monitoring and adversarial robustness is often `paraphrase_robustness` in `results/metrics.json`: cheap template / typo-style rewrites can lower mean probe scores on jailbreak text while still flagging many variants. That pattern-partial robustness plus a clear attack surface- is exactly the kind of nuance oversight systems need. When you cite this project in an application, emphasize that stress test first, then headline AUROC.
 
 AUROC can saturate on a small holdout set. It is normal to see AUROC at or near 1.0 on several layers when the test split is modest (on the order of n ≈ 100–150 examples after family-aware grouping). That suggests strong linear separability on this distribution, not that the problem is “solved” in the wild. Report those numbers, but qualify them: small *n*, single backbone, single benchmark pairing-interpret cautiously.
 
-FPR on benign needs a sample-size caveat. `fpr_at_prob_0.5_on_benign` is computed on held-out benign prompts only; with on the order of ~65 negatives, one flipped example moves the rate by about 1.5 percentage points. Treat headline FPR as illustrative, not a stable production estimate—repeat with more data or bootstrap confidence intervals if you need rigor.
+FPR on benign needs a sample-size caveat. `fpr_at_prob_0.5_on_benign` is computed on held-out benign prompts only; with on the order of ~65 negatives, one flipped example moves the rate by about 1.5 percentage points. Treat headline FPR as illustrative, not a stable production estimate-repeat with more data or bootstrap confidence intervals if you need rigor.
 
 ### Results table (fill after you run)
 
@@ -97,11 +97,11 @@ FPR on benign needs a sample-size caveat. `fpr_at_prob_0.5_on_benign` is compute
 
 Per-layer test AUROC is in `results/metrics.json` under `per_layer_test_auroc` (index = layer, 0 = embeddings).
 
-False positives on clean inputs: `metrics.json` reports `fpr_at_prob_0.5_on_benign` and a negative-only thresholding note under `fpr_calibration_5pct_neg` (TPR/FPR at a score threshold derived from ~5% FPR on negatives—read as a calibration-style diagnostic, not a production guarantee).
+False positives on clean inputs: `metrics.json` reports `fpr_at_prob_0.5_on_benign` and a negative-only thresholding note under `fpr_calibration_5pct_neg` (TPR/FPR at a score threshold derived from ~5% FPR on negatives, read as a calibration-style diagnostic, not a production guarantee).
 
 Perturbation robustness: `paraphrase_robustness` compares scores on held-out jailbreak prompts versus light template / typo-style paraphrases (no external LLM by default). Swap in your own paraphraser inside `eval/evaluate.py` for stronger stress tests.
 
-Bonus — early tokens: `eval/evaluate.py` defaults to `--early-tokens 50,100`, re-encoding the test set with shorter `max_length` and reporting AUROC for the multi-layer probe trained on full-length features (train/eval mismatch is intentional: it measures how detection degrades when only prefixes are visible—relevant to streaming).
+Bonus - early tokens: `eval/evaluate.py` defaults to `--early-tokens 50,100`, re-encoding the test set with shorter `max_length` and reporting AUROC for the multi-layer probe trained on full-length features (train/eval mismatch is intentional: it measures how detection degrades when only prefixes are visible—relevant to streaming).
 
 ## Limitations
 
