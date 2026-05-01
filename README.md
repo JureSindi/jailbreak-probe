@@ -101,7 +101,7 @@ False positives on clean inputs: `metrics.json` reports `fpr_at_prob_0.5_on_beni
 
 Perturbation robustness: `paraphrase_robustness` compares scores on held-out jailbreak prompts versus light template / typo-style paraphrases (no external LLM by default). Swap in your own paraphraser inside `eval/evaluate.py` for stronger stress tests.
 
-Bonus - early tokens: `eval/evaluate.py` defaults to `--early-tokens 50,100`, re-encoding the test set with shorter `max_length` and reporting AUROC for the multi-layer probe trained on full-length features (train/eval mismatch is intentional: it measures how detection degrades when only prefixes are visible—relevant to streaming).
+Bonus - early tokens: `eval/evaluate.py` defaults to `--early-tokens 50,100`, re-encoding the test set with shorter `max_length` and reporting AUROC for the multi-layer probe trained on full-length features (train/eval mismatch is intentional: it measures how detection degrades when only prefixes are visible-relevant to streaming).
 
 ## Limitations
 
