@@ -89,11 +89,13 @@ AUROC can saturate on a small holdout set. It is normal to see AUROC at or near 
 
 FPR on benign needs a sample-size caveat. `fpr_at_prob_0.5_on_benign` is computed on held-out benign prompts only; with on the order of ~65 negatives, one flipped example moves the rate by about 1.5 percentage points. Treat headline FPR as illustrative, not a stable production estimate-repeat with more data or bootstrap confidence intervals if you need rigor.
 
-### Results table (fill after you run)
+### Results table
+
+Representative run: seed and splits from `data/prepare_dataset.py` defaults; metrics in `probes/artifacts/train_summary.json` and `results/metrics.json`.
 
 | Probe | Val AUROC (best single layer) | Val AUROC (final layer) | Val AUROC (multi-concat) | Test AUROC (final) | Test AUROC (multi) |
 |--------|-------------------------------|-------------------------|---------------------------|--------------------|--------------------|
-| GPT-2 medium | see `train_summary.json` → `best_single_layer_auroc` | `val_auroc_final_layer` | `val_auroc_multi_concat` | `metrics.json` | `metrics.json` |
+| GPT-2 medium | 1.0000 | 0.9974 | 0.9991 | 0.9997 | 1.0000 |
 
 Per-layer test AUROC is in `results/metrics.json` under `per_layer_test_auroc` (index = layer, 0 = embeddings).
 
