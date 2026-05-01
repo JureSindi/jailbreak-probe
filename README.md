@@ -112,6 +112,6 @@ Bonus - early tokens: `eval/evaluate.py` defaults to `--early-tokens 50,100`, re
 
 ## References
 
-- AdvBench harmful behaviors benchmark: Andy Zou, Zifan Wang, J. Zico Kolter, Matt Fredrikson, “Universal and Transferable Adversarial Attacks on Aligned Language Models,” 2023. Dataset often cited as AdvBench (520 behaviors); Hugging Face: `walledai/AdvBench` (gated) — see also public mirrors of the same benchmark.
+- AdvBench harmful behaviors benchmark: Andy Zou, Zifan Wang, J. Zico Kolter, Matt Fredrikson, “Universal and Transferable Adversarial Attacks on Aligned Language Models,” 2023. Dataset often cited as AdvBench (520 behaviors); Hugging Face: `walledai/AdvBench` (gated) - see also public mirrors of the same benchmark.
 - Latent Sentinel (layer-wise real-time jailbreak detection with probes): Jea Sung Kim & Suan Lee, *Latent Sentinel: Real-Time Jailbreak Detection with Layer-wise Probes*, OpenReview: [https://openreview.net/forum?id=tuFRx6Ww2n](https://openreview.net/forum?id=tuFRx6Ww2n).
 
