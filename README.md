@@ -60,12 +60,12 @@ jailbreak-probe/
 └── results/metrics.json     # written by eval (gitignored)
 ```
 
-## Quickstart
+## Commands to run
 
 From the project root:
 
 ```bash
-python -m venv .venv && source .venv/bin/activate   # optional
+python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 
 python data/prepare_dataset.py
