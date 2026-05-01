@@ -2,7 +2,7 @@
 
 ## Motivation
 
-Deployed language models need monitoring signals that fire before harmful completions are emitted. White-box methods can read internal activations at inference time, enabling classifiers that do not depend on brittle string rules. This project implements a minimal, reproducible pipeline: frozen backbone (e.g., GPT-2 medium) → layer-wise mean-pooled hidden states → logistic-regression probes, trained on AdvBench-style jailbreak prompts versus benign Alpaca instructions. The goal is to study, in depth, a linear separator that emerges and whether multi-layer aggregation improves over the best single layer—connecting to AI control and oversight themes (latent monitoring, residual risk measurement, and defense-in-depth around automated agents).
+Deployed language models need monitoring signals that fire before harmful completions are emitted. White-box methods can read internal activations at inference time, enabling classifiers that do not depend on brittle string rules. This project implements a minimal, reproducible pipeline: frozen backbone (e.g., GPT-2 medium) → layer-wise mean-pooled hidden states → logistic-regression probes, trained on AdvBench-style jailbreak prompts versus benign Alpaca instructions. The goal is to study, in depth, a linear separator that emerges and whether multi-layer aggregation improves over the best single layer-connecting to AI control and oversight themes (latent monitoring, residual risk measurement, and defense-in-depth around automated agents).
 
 ## Method overview
 
@@ -83,9 +83,9 @@ After training, `probes/artifacts/train_summary.json` contains `val_auroc_per_la
 
 ### Interpreting and reporting results (honest framing)
 
-Lead with paraphrase robustness in applications. The most informative signal for monitoring and adversarial robustness is often `paraphrase_robustness` in `results/metrics.json`: cheap template / typo-style rewrites can lower mean probe scores on jailbreak text while still flagging many variants. That pattern—partial robustness plus a clear attack surface—is exactly the kind of nuance oversight systems need. When you cite this project in an application, emphasize that stress test first, then headline AUROC.
+Lead with paraphrase robustness in applications. The most informative signal for monitoring and adversarial robustness is often `paraphrase_robustness` in `results/metrics.json`: cheap template / typo-style rewrites can lower mean probe scores on jailbreak text while still flagging many variants. That pattern—partial robustness plus a clear attack surface- is exactly the kind of nuance oversight systems need. When you cite this project in an application, emphasize that stress test first, then headline AUROC.
 
-AUROC can saturate on a small holdout set. It is normal to see AUROC at or near 1.0 on several layers when the test split is modest (on the order of n ≈ 100–150 examples after family-aware grouping). That suggests strong linear separability on this distribution, not that the problem is “solved” in the wild. Report those numbers, but qualify them: small *n*, single backbone, single benchmark pairing—interpret cautiously.
+AUROC can saturate on a small holdout set. It is normal to see AUROC at or near 1.0 on several layers when the test split is modest (on the order of n ≈ 100–150 examples after family-aware grouping). That suggests strong linear separability on this distribution, not that the problem is “solved” in the wild. Report those numbers, but qualify them: small *n*, single backbone, single benchmark pairing-interpret cautiously.
 
 FPR on benign needs a sample-size caveat. `fpr_at_prob_0.5_on_benign` is computed on held-out benign prompts only; with on the order of ~65 negatives, one flipped example moves the rate by about 1.5 percentage points. Treat headline FPR as illustrative, not a stable production estimate—repeat with more data or bootstrap confidence intervals if you need rigor.
 
