@@ -2,7 +2,7 @@
 
 ## Motivation
 
-Deployed language models need **monitoring signals that fire before harmful completions are emitted**. White-box methods can read internal activations at inference time, enabling classifiers that do not depend on brittle string rules. This project implements a minimal, reproducible pipeline: **frozen backbone (e.g., GPT-2 medium) → layer-wise mean-pooled hidden states → logistic-regression probes**, trained on AdvBench-style jailbreak prompts versus benign Alpaca instructions. The goal is to study *where* in depth a linear separator emerges and whether **multi-layer aggregation** improves over the best single layer—connecting to AI control and oversight themes (latent monitoring, residual risk measurement, and defense-in-depth around automated agents).
+Deployed language models need monitoring signals that fire before harmful completions are emitted. White-box methods can read internal activations at inference time, enabling classifiers that do not depend on brittle string rules. This project implements a minimal, reproducible pipeline: frozen backbone (e.g., GPT-2 medium) → layer-wise mean-pooled hidden states → logistic-regression probes, trained on AdvBench-style jailbreak prompts versus benign Alpaca instructions. The goal is to study, in depth, a linear separator that emerges and whether multi-layer aggregation improves over the best single layer—connecting to AI control and oversight themes (latent monitoring, residual risk measurement, and defense-in-depth around automated agents).
 
 ## Method overview
 
